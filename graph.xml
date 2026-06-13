@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="utf-8"?>
+<rdf:RDF
+   xmlns:ns1="http://example.org/"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+>
+  <rdf:Description rdf:about="http://example.org/Ali">
+    <ns1:isStudentOf rdf:resource="http://example.org/DHASuffaUniversity"/>
+    <ns1:studies rdf:resource="http://example.org/ComputerScience"/>
+    <ns1:knows rdf:resource="http://example.org/Ahmed"/>
+  </rdf:Description>
+  <rdf:Description rdf:about="http://example.org/Ahmed">
+    <ns1:worksAt rdf:resource="http://example.org/TechSoft"/>
+  </rdf:Description>
+</rdf:RDF>

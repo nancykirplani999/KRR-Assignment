@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Knowledge Graph Frontend</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 40px; background-color: #f4f6f9; }
+        .card { background: white; padding: 20px; border-radius: 8px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); max-width: 500px; margin: auto; }
+        h2 { color: #333; border-bottom: 2px solid #0070f3; padding-bottom: 10px; text-align: center; }
+        p { font-size: 16px; color: #555; line-height: 1.6; padding: 5px 0; }
+        strong { color: #0070f3; }
+    </style>
+</head>
+<body>
+    <div class="card">
+        <h2>Graph Query Result (Task 7)</h2>
+        <div id="graph-data">Loading data from graph...</div>
+    </div>
+
+    <script>
+        // Flask server se data fetch karna
+        fetch('http://127.0.0.1:5000/api/graph')
+            .then(response => response.json())
+            .then(data => {
+                const container = document.getElementById('graph-data');
+                container.innerHTML = ''; // Loading text khatam karne ke liye
+                
+                data.forEach(item => {
+                    container.innerHTML += `
+                        <p><strong>Student Name:</strong> ${item.student}</p>
+                        <p><strong>University:</strong> ${item.university}</p>
+                        <p><strong>Studies:</strong> ${item.subject}</p>
+                        <p><strong>Knows Friend:</strong> ${item.friend}</p>
+                        <p><strong>Friend Works At:</strong> ${item.company}</p>
+                    `;
+                });
+            })
+            .catch(error => {
+                document.getElementById('graph-data').innerText = 'Error loading graph data.';
+                console.error('Error:', error);
+            });
+    </script>
+</body>
+</html>
